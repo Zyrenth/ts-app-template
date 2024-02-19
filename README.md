@@ -2,7 +2,7 @@
 Base template for a typescript app.
 
 # Setup
-After cloning, init your package by running
+After cloning, init your project by running
 ```bash
 npm init -y
 ```
