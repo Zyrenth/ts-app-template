@@ -1,4 +1,7 @@
+import { fileURLToPath } from 'node:url';
+
 import fs from 'fs';
+import path from 'path';
 import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
