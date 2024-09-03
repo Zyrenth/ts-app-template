@@ -1,4 +1,4 @@
-const { exec } = require('child_process');
+import { exec } from 'child_process';
 
 const scripts = process.argv.slice(2);
 
@@ -6,7 +6,8 @@ const runScript = (scriptName) => {
     return new Promise((resolve) => {
         const proc = exec(`pnpm run ${scriptName}`, (error) => {
             if (error) {
-                console.error(`An error occurred while running script "${scriptName}".`);
+                console.error(`An error occurred while running script "${scriptName}". Exiting...`);
+                process.exit(1);
             } else {
                 resolve();
             }
