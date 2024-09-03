@@ -1,14 +1,25 @@
 {
     "compilerOptions": {
+        "lib": ["ESNext"],
         "target": "ESNext",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "moduleDetection": "force",
         "resolveJsonModule": true,
+        "allowJs": true,
+
+        "strict": true,
+        "noEmit": true,
+
         "rootDir": "src",
         "outDir": "dist",
-        "removeComments": true,
+
         "skipLibCheck": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+
+        "removeComments": true,
+        "noUncheckedIndexedAccess": true,
+        "forceConsistentCasingInFileNames": true
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "dist"]
