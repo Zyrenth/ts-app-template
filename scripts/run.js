@@ -1,6 +1,8 @@
 import { exec } from 'child_process';
 
-const scripts = process.argv.slice(2);
+let scripts = process.argv.slice(2);
+const runAsSync = scripts.includes('--sync');
+if (runAsSync) scripts = scripts.filter(script => script !== '--sync');
 
 const runScript = (scriptName) => {
     return new Promise((resolve) => {
@@ -20,7 +22,10 @@ const runScript = (scriptName) => {
 
 const runScriptsConcurrently = async () => {
     try {
-        await Promise.all(scripts.map(runScript));
+        if (!runAsSync) await Promise.all(scripts.map(runScript));
+        else for (const script of scripts) {
+            await runScript(script);
+        }
         console.log('All scripts completed successfully.');
     } catch (error) {
         console.error('An error occurred:', error);
