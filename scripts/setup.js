@@ -17,7 +17,7 @@ try {
 
     fs.unlinkSync(path.join(__dirname, '..', './Banner.png'));
     fs.rmdirSync(path.join(__dirname, '..', './Badges'), { recursive: true });
-    fs.rmdirSync(path.join(__dirname, '..', './.git'), { recursive: true });
+    // fs.rmdirSync(path.join(__dirname, '..', './.git'), { recursive: true });
 
     delete packageJson.scripts.setup;
     fs.writeFileSync(path.join(__dirname, '..', 'package.json'), JSON.stringify(packageJson, null, 4));
@@ -35,6 +35,11 @@ try {
     console.error('[Setup]', 'Failed to install dependencies. Do you have pnpm installed?');
 }
 
+/*
+We no longer clean up git as most people are probably creating a new repo
+using the template and cloning that instead of cloning the template directly.
+------
+
 console.log('[Setup]', 'Initializing git...');
 
 try {
@@ -42,5 +47,6 @@ try {
 } catch (err) {
     console.error('[Setup]', 'Failed to initialize git. Do you have git installed?');
 }
+*/
 
 console.log('[Setup]', 'Setup complete.');
